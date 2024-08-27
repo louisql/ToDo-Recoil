@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import todoState from "../state/atoms/TodoState";
 import { useState } from "react";
+import Todo from "./Todo";
 
 export default function Todos() {
     const [todos, setTodos] = useRecoilState(todoState);
@@ -25,7 +26,11 @@ export default function Todos() {
           <button onClick={addToDo}>Add Todo</button>
           <button onClick={clearToDos}>Clear Todos</button>
 
-
+        {todos.map( (todo) => {
+            return (
+                <Todo key={todo.id} text={todo.text} id={todo.id} />
+            )
+        })}
 
       </main>
     );
